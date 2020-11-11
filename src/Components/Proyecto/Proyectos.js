@@ -44,7 +44,6 @@ const Proyectos = () => {
                                     usuario={usuario}
                                 />
                                 ))}
-
                                 </tbody>
                              </table>
                     </div>

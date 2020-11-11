@@ -94,6 +94,16 @@ a {
   display: block;
   background-color: transparent;
 }
+.nav-link{
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  transition: .5s ease;
+}
+.nav-link:hover{
+  color: white;
+  font-size: 22px;
+}
 
 @media (min-width: 768px) {
   .contenedor-app {
