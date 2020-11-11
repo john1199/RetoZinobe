@@ -1,5 +1,6 @@
 :root {
   --blanco: #ffffff;
+  --fondo: #101f28;
   --verde:  #00d963;
   --gris2: #2f3848;
   --fondo: #101f28;
@@ -40,6 +41,9 @@ h1 {
 h2 {
   font-size: 2.4rem;
 }
+.titulo-proyectos{
+  color: white;
+}
 ul {
   list-style: none;
   padding: 0;
@@ -68,9 +72,11 @@ a {
 .btn-primario {
   background-color: var(--verde);
   color: var(--blanco);
+  font-size: 18px;
 }
 .btn-primario:hover {
   background: var(--fondo);
+  color: white;
 }
 .btn-secundario {
   background-color: var(--gris1);
@@ -96,7 +102,7 @@ a {
   }
 
   aside {
-      background-color: var(--blanco);
+      background-color: var(--fondo);
       flex: 0 0 300px;
   }
   .seccion-principal {
@@ -325,7 +331,13 @@ aside  {
 }
 .campo-form input[type="password"],
 .campo-form input[type="email"], 
-.campo-form input[type="text"] {
+.campo-form input[type="text"],
+.campo-form input[type="number"]{
+  border: 1px solid #e1e1e1;
+  padding: 1rem;
+  flex: 1;
+}
+select{
   border: 1px solid #e1e1e1;
   padding: 1rem;
   flex: 1;
@@ -366,4 +378,7 @@ aside  {
 .alerta-error {
   background-color: rgb(230, 78, 78);
   color: var(--blanco);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
 }
