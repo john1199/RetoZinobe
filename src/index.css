@@ -10,7 +10,10 @@
 }
 *, *:before, *:after {
   box-sizing: inherit;
-} 
+}
+.sin-padding{
+  padding: 0;
+}
 html {
   box-sizing: border-box;
   height: 100%;
@@ -53,7 +56,21 @@ a {
   text-decoration: none;
   color: var(--gris2);
 }
+.header-padding{
+  padding: 30px;
+}
 
+.cerrar-sesion{
+  margin-top: 600px;
+}
+.cerrar:hover{
+  color:rgb(230, 78, 78)!important;
+}
+
+.bg-success {
+  background-color: #28a745!important;
+  width: 25%;
+}
 /** BOTONES **/
 .btn {
   margin-top: 2rem;

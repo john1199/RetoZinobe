@@ -9,14 +9,14 @@ const Sidebar = () => {
             <h1 className="titulo-proyectos">Zinobe <span>Gamificación</span></h1>   
 
             <ul className="nav flex-column text-center">
-                <Link className="nav-link mt-5"  to={'/proyectos'}>
+                <Link className="nav-link mt-5"  to={'/admin'}>
                     Crear usuario
                 </Link>
                 <Link className="nav-link mt-5"  to={'/progreso'}>
                     Progreso
                 </Link>
-                <li className="nav-item">
-                    <a className="nav-link mt-5" href="#">Link</a>
+                <li className="nav-item cerrar-sesion">
+                    <a className="nav-link mt-5 cerrar" href="#">Cerrar Sesión</a>
                 </li>
             </ul>
             </aside>
