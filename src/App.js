@@ -15,7 +15,6 @@ function App() {
           <Route exact path="/admin" component={Proyectos}/>
           <Route path='/progreso' component={Progreso}/>     
           <Route path='/usuario' component={Usuario}/>
-             
       </Switch>
     </Router>
   );

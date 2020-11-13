@@ -5,20 +5,34 @@ import {Link} from 'react-router-dom';
 const Sidebar = () => {
     return ( 
         <Fragment>
-            <aside>
-            <h1 className="titulo-proyectos">Zinobe <span>Gamificación</span></h1>   
-
-            <ul className="nav flex-column text-center">
-                <Link className="nav-link mt-5"  to={'/admin'}>
-                    Crear usuario
-                </Link>
-                <Link className="nav-link mt-5"  to={'/progreso'}>
-                    Progreso
-                </Link>
-                <li className="nav-item cerrar-sesion">
-                    <a className="nav-link mt-5 cerrar" href="#">Cerrar Sesión</a>
-                </li>
-            </ul>
+            <aside className="aside">
+                <nav className="side-navbar">
+                    <div id="navbarNav">
+                        <div className="usuario d-flex align-items-stretch">
+                            <div>
+                                <i class="fas fa-user fa-3x"></i>
+                            </div>
+                            <div className="ml-5">
+                                <h1 className="h3">Nombre usuario</h1>
+                                <p>Equipo asignado</p>
+                            </div>
+                        </div>
+                        <ul className="nav flex-column">
+                            <li className="active">
+                                <Link className="nav-link"  to={'/admin'}>
+                                    <i class="fas fa-plus mr-3"></i>
+                                    Crear usuario
+                                </Link>
+                            </li>
+                            <li>
+                                <Link className="nav-link"  to={'/progreso'}>
+                                    <i class="fas fa-tasks mr-3"></i>
+                                    Progreso
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </aside>
         </Fragment>
      );

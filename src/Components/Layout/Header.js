@@ -3,22 +3,20 @@ import React from 'react'
 
 const Header = () => {
     return ( 
-        <div className="container-fluid sin-padding">
-            <header className="header-padding">
-                <div className="row">
-                    <div className="col-md-8">
-                        <h3>Bienvenido "nombre usuario"</h3>
-                        <h3>Proyecto asignado</h3>
-                    </div>
-                    <div className="col-md-4 text-center">
-                        <i class="fas fa-user fa-3x"></i>
-                        <div className="progress mt-4">
-                            <div className="progress-bar bg-success" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
+        <header className="header">
+            <nav class="navbar navbar-expand-lg">
+                <h1 className="titulo-proyectos">Zinobe <span>Gamificación</span></h1> 
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link cerrar" href="#">Cerrar Sesión<i class="fas fa-sign-out-alt ml-4"></i> <span class="sr-only">(current)</span></a>
+                        </li>
+                    </ul>
                 </div>
-            </header>
-        </div>
+                
+            </nav>
+        </header>
      );
 }
  

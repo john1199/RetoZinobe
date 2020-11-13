@@ -82,7 +82,7 @@ const NuevoUsuario = ({CrearUsuario}) => {
         }
     return ( 
         <Fragment>
-            <div className="mt-5">
+            <div className="mt-3 sombra">
                 <h2>Agregar usuarios</h2>
                 <form
                     onSubmit={onSubmit}
