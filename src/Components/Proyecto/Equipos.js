@@ -44,21 +44,21 @@ const Equipos = () => {
                         <NuevoEquipo
                             CrearEquipo={CrearEquipo}
                         />
-                            <h2 className="mt-5 mb-5">Listado de usuarios</h2>
-                                <table className="table table-striped sombra text-center">
-                                    <thead>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Descripcion</th>
-                                    </thead>
-                                    <tbody>
-                                        {equipoNuevo.map(equipos => (
-                                            <ListadoEquipos
-                                                key = {equipos.id}
-                                                equipos = {equipos}
-                                            />
-                                        ))}
-                                    </tbody>
-                                </table>
+                        <h2 className="mt-5 mb-5">Listado de usuarios</h2>
+                            <table className="table table-striped sombra text-center">
+                                <thead>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Descripcion</th>
+                                </thead>
+                                <tbody>
+                                    {equipoNuevo.map(equipos => (
+                                        <ListadoEquipos
+                                            key = {equipos.id}
+                                            equipos = {equipos}
+                                        />
+                                    ))}
+                                </tbody>
+                            </table>
                     </div>
                 </div>
             </div>

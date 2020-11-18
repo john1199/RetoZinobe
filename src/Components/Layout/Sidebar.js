@@ -9,12 +9,15 @@ const Sidebar = () => {
                 <nav className="side-navbar">
                     <div id="navbarNav">
                         <div className="usuario d-flex align-items-stretch">
-                            <div>
+                            <div className="centrado">
                                 <i className="fas fa-user fa-3x"></i>
                             </div>
                             <div className="ml-5">
                                 <h1 className="h3">Nombre usuario</h1>
                                 <p>Equipo asignado</p>
+                                <Link to={'/perfil'}>
+                                    Ver Perfil
+                                </Link>
                             </div>
                         </div>
                         <ul className="nav flex-column">
@@ -25,19 +28,19 @@ const Sidebar = () => {
                                 </a>
                                 <ul id="exampledropdown" className="list-unstyled collapse show">
                                     <li>
-                                        <Link className="nav-link dropdown-item"  to={'/admin'}>
+                                        <Link className="nav-link dropdown-item"  to={'/admin/crearusuarios'}>
                                             <i className="fas fa-plus mr-3"></i>
                                             Crear usuario
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link  className="nav-link dropdown-item"  to={'/equipos'}>
+                                        <Link  className="nav-link dropdown-item"  to={'/admin/equipos'}>
                                             <i className="fas fa-plus mr-3"></i>
                                             Crear Equipos
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link className="nav-link dropdown-item"  to={'/senorities'}>
+                                        <Link className="nav-link dropdown-item"  to={'/admin/senorities'}>
                                             <i className="fas fa-plus mr-3"></i>
                                             Crear Señorities
                                         </Link>

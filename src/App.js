@@ -7,6 +7,7 @@ import Progreso from './Components/Proyecto/Progreso';
 import Usuario from './Components/Proyecto/Usuario';
 import Equipos from './Components/Proyecto/Equipos';
 import Senorities from './Components/Proyecto/Senorities';
+import Perfil from './Components/Layout/Perfil';
 
 function App() {
   return (
@@ -14,11 +15,12 @@ function App() {
       <Switch>
           <Route exact path="/" component={Login}/>
           <Route exact path="/nueva-cuenta" component={NuevaCuenta}/>
-          <Route exact path="/admin" component={Proyectos}/>
+          <Route exact path="/admin/crearusuarios" component={Proyectos}/>
           <Route path='/progreso' component={Progreso}/>     
           <Route path='/usuario' component={Usuario}/>
-          <Route path='/equipos' component={Equipos}/>
-          <Route path='/senorities' component={Senorities}/>         
+          <Route path='/admin/equipos' component={Equipos}/>
+          <Route path='/admin/senorities' component={Senorities}/>
+          <Route path='/perfil' component={Perfil}/>    
       </Switch>
     </Router>
   );
