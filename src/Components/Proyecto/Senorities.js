@@ -45,10 +45,15 @@ const Senorities = () => {
                             <h2 className="mt-5 mb-5">Listado de Señorities</h2>
                                 <table className="table table-striped sombra text-center">
                                     <thead>
+<<<<<<< HEAD
                                         <tr>
                                             <th scope="col">Nombre</th>
                                             <th scope="col">Descripcion</th>
                                         </tr>
+=======
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">Descripcion</th>
+>>>>>>> 9028a685b7df3fc4c6f76854f2d83c2408084d09
                                     </thead>
                                     <tbody>
                                         {NivelNuevo.map(niveles => (

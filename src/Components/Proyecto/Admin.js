@@ -47,13 +47,19 @@ const Proyectos = () => {
                             <h2 className="mt-5 mb-5">Listado de usuarios</h2>
                                 <table className="table table-striped sombra text-center">
                                     <thead>
+<<<<<<< HEAD
                                         <tr>
+=======
+>>>>>>> 9028a685b7df3fc4c6f76854f2d83c2408084d09
                                         <th scope="col">Nombre</th>
                                         <th scope="col">Cedula</th>
                                         <th scope="col">Correo</th>
                                         <th scope="col">Rol</th>
                                         <th scope="col">Equipo</th>
+<<<<<<< HEAD
                                         </tr>
+=======
+>>>>>>> 9028a685b7df3fc4c6f76854f2d83c2408084d09
                                     </thead>
                                     <tbody>
                                         {usuarioForm.map(usuario => (
