@@ -28,7 +28,7 @@ const Sidebar = () => {
                                 </a>
                                 <ul id="exampledropdown" className="list-unstyled collapse show">
                                     <li>
-                                        <Link className="nav-link dropdown-item"  to={'/admin/crearusuarios'}>
+                                        <Link className="nav-link dropdown-item"  to={'/admin/crear-usuarios'}>
                                             <i className="fas fa-plus mr-3"></i>
                                             Crear usuario
                                         </Link>

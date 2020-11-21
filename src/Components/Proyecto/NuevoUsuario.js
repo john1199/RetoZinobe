@@ -46,6 +46,7 @@ const NuevoUsuario = (props) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    console.log(usuario);
     //Validar campos vacios
     if (
       name.trim() === "" ||
@@ -83,8 +84,8 @@ const NuevoUsuario = (props) => {
     //usuario.id = uuidv4();
 
     //Pasarlo al action
-
-    props.registerUser(usuario, "/login");
+    console.log(usuario);
+    //props.registerUser(usuario, "/admin/crearusuarios");
 
     //reiniciando el formularo
     guardarUsuario({
@@ -103,36 +104,33 @@ const NuevoUsuario = (props) => {
         <h2>Agregar usuarios</h2>
         <form onSubmit={onSubmit}>
           <div className="campo-form">
-            <label htmlFor="nombre">Nombre</label>
+            <label htmlFor="name">Nombre</label>
             <input
               type="text"
-              id="nombre"
-              name="nombre"
-              value={name}
+              id="name"
+              name="name"
               placeholder="Tu nombre"
               onChange={onChange}
             />
           </div>
 
           <div className="campo-form">
-            <label htmlFor="nombre">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
               name="email"
-              value={email}
               placeholder="Tu Email"
               onChange={onChange}
             />
           </div>
 
           <div className="campo-form">
-            <label htmlFor="cedula">Cedula</label>
+            <label htmlFor="identificationCard">Cedula</label>
             <input
               type="number"
-              id="cedula"
-              name="cedula"
-              value={identificationCard}
+              id="identificationCard"
+              name="identificationCard"
               placeholder="Numero de cedula"
               onChange={onChange}
             />
@@ -144,7 +142,6 @@ const NuevoUsuario = (props) => {
               type="password"
               id="password"
               name="password"
-              value={password}
               placeholder="Tu password"
               onChange={onChange}
             />
@@ -156,7 +153,6 @@ const NuevoUsuario = (props) => {
               type="password"
               id="confirmar"
               name="confirmar"
-              value={confirmar}
               placeholder="Repite tu password"
               onChange={onChange}
             />
@@ -164,16 +160,16 @@ const NuevoUsuario = (props) => {
 
           <div className="campo-form">
             <label htmlFor="confirmar">Seleccionar Rol</label>
-            <select name="rol" value={isAdmin} onChange={onChange}>
+            <select value={isAdmin} onChange={onChange}>
               <option value="">-- Seleccione una opcion --</option>
-              <option value="admin">Administrador</option>
-              <option value="usuario">Usuario</option>
+              <option value="Administrador">Administrador</option>
+              <option value="Usuario">Usuario</option>
             </select>
           </div>
 
           <div className="campo-form">
             <label htmlFor="confirmar">Asignar Equipo</label>
-            <select name="equipo" value={team} onChange={onChange}>
+            <select value={usuario.team} onChange={onChange}>
               <option value="">-- Seleccione una opcion --</option>
               <option value="diseño">Diseño</option>
               <option value="desarrollo">Desarrollo</option>

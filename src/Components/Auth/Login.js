@@ -28,9 +28,9 @@ const Login = (props) => {
     e.preventDefault();
     console.log(usuario);
     //Validar campos vacios
-    if (email.trim() === "" || password.trim() === "") {
-      alert("Por favor rellene todos los campos");
-    }
+    //if (email.trim() === "" || password.trim() === "") {
+     // alert("Por favor rellene todos los campos");
+   // }
     //Pasarlo al action
     props.loginUser(usuario, "/progreso");
   };
