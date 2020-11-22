@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from "react";
 import Error from "../Layout/Error";
-import { v4 as uuidv4 } from "uuid";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerUser } from "../../actions";
 
 const NuevoUsuario = (props) => {
   //State para iniciar Sesión
@@ -45,8 +47,12 @@ const NuevoUsuario = (props) => {
   //Cuando el usuario quiere iniciar sesion
   const onSubmit = (e) => {
     e.preventDefault();
-
-    console.log(usuario);
+    //si es admin no hay debe haber team
+    if (isAdmin === "Administrador") {
+      guardarUsuario({
+        team: "",
+      });
+    }
     //Validar campos vacios
     if (
       name.trim() === "" ||
@@ -54,8 +60,7 @@ const NuevoUsuario = (props) => {
       identificationCard.trim() === "" ||
       password.trim() === "" ||
       confirmar.trim() === "" ||
-      isAdmin.trim() === "" ||
-      team.trim() === ""
+      isAdmin.trim() === ""
     ) {
       guardarError(true);
       return;
@@ -84,11 +89,11 @@ const NuevoUsuario = (props) => {
     //usuario.id = uuidv4();
 
     //Pasarlo al action
-    console.log(usuario);
-    //props.registerUser(usuario, "/admin/crearusuarios");
+    props.registerUser(usuario, "");
 
     //reiniciando el formularo
-    guardarUsuario({
+    e.target.reset();
+    /*guardarUsuario({
       name: "",
       email: "",
       identificationCard: "",
@@ -96,7 +101,7 @@ const NuevoUsuario = (props) => {
       confirmar: "",
       isAdmin: "",
       team: "",
-    });
+    });*/
   };
   return (
     <Fragment>
@@ -159,22 +164,23 @@ const NuevoUsuario = (props) => {
           </div>
 
           <div className="campo-form">
-            <label htmlFor="confirmar">Seleccionar Rol</label>
-            <select value={isAdmin} onChange={onChange}>
+            <label htmlFor="isAdmin">Seleccionar Rol</label>
+            <select name="isAdmin" onChange={onChange}>
               <option value="">-- Seleccione una opcion --</option>
               <option value="Administrador">Administrador</option>
               <option value="Usuario">Usuario</option>
             </select>
           </div>
-
-          <div className="campo-form">
-            <label htmlFor="confirmar">Asignar Equipo</label>
-            <select value={usuario.team} onChange={onChange}>
-              <option value="">-- Seleccione una opcion --</option>
-              <option value="diseño">Diseño</option>
-              <option value="desarrollo">Desarrollo</option>
-            </select>
-          </div>
+          {isAdmin == "Usuario" ? (
+            <div className="campo-form">
+              <label htmlFor="team">Asignar Equipo</label>
+              <select name="team" onChange={onChange}>
+                <option value="">-- Seleccione una opcion --</option>
+                <option value="diseño">Diseño</option>
+                <option value="desarrollo">Desarrollo</option>
+              </select>
+            </div>
+          ) : null}
 
           <div className="campo-form">
             <input
@@ -207,4 +213,12 @@ const NuevoUsuario = (props) => {
   );
 };
 
-export default NuevoUsuario;
+const mapDispatchToProps = {
+  registerUser,
+};
+
+NuevoUsuario.propTypes = {
+  registerUser: PropTypes.func,
+};
+
+export default connect(null, mapDispatchToProps)(NuevoUsuario);

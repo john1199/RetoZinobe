@@ -27,9 +27,9 @@ export const registerUser = (payload, redirectUrl) => {
       .then(({ data }) => {
         dispatch(registerRequest(data));
       })
-      .then(() => {
-        window.location.href = redirectUrl;
-      })
+     // .then(() => {
+      //  window.location.href = redirectUrl;
+     // })
       .catch((error) => dispatch(setError(error)));
   };
 };
