@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions";
 
-const NuevoUsuario = (props) => {
+const NuevoUsuario = ({ CrearUsuario }) => {
   //State para iniciar Sesión
   const [usuario, guardarUsuario] = useState({
     name: "",
@@ -105,108 +105,155 @@ const NuevoUsuario = (props) => {
   };
   return (
     <Fragment>
-      <div className="mt-5">
-        <h2>Agregar usuarios</h2>
-        <form onSubmit={onSubmit}>
-          <div className="campo-form">
-            <label htmlFor="name">Nombre</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Tu nombre"
-              onChange={onChange}
-            />
-          </div>
-
-          <div className="campo-form">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Tu Email"
-              onChange={onChange}
-            />
-          </div>
-
-          <div className="campo-form">
-            <label htmlFor="identificationCard">Cedula</label>
-            <input
-              type="number"
-              id="identificationCard"
-              name="identificationCard"
-              placeholder="Numero de cedula"
-              onChange={onChange}
-            />
-          </div>
-
-          <div className="campo-form">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Tu password"
-              onChange={onChange}
-            />
-          </div>
-
-          <div className="campo-form">
-            <label htmlFor="confirmar">Confirmar Password</label>
-            <input
-              type="password"
-              id="confirmar"
-              name="confirmar"
-              placeholder="Repite tu password"
-              onChange={onChange}
-            />
-          </div>
-
-          <div className="campo-form">
-            <label htmlFor="isAdmin">Seleccionar Rol</label>
-            <select name="isAdmin" onChange={onChange}>
-              <option value="">-- Seleccione una opcion --</option>
-              <option value="Administrador">Administrador</option>
-              <option value="Usuario">Usuario</option>
-            </select>
-          </div>
-          {isAdmin == "Usuario" ? (
-            <div className="campo-form">
-              <label htmlFor="team">Asignar Equipo</label>
-              <select name="team" onChange={onChange}>
-                <option value="">-- Seleccione una opcion --</option>
-                <option value="diseño">Diseño</option>
-                <option value="desarrollo">Desarrollo</option>
-              </select>
-            </div>
-          ) : null}
-
-          <div className="campo-form">
-            <input
-              type="submit"
-              className="btn btn-primario btn-block"
-              value="Crear usuario"
-            />
-          </div>
+      <div className="flexi">
+        <i
+          type="button"
+          className="far fa-plus-square fa-2x mr-3"
+          data-toggle="modal"
+          data-target="#staticBackdrop"
+        ></i>
+        Agregar Usuario
+        <form className="form-inline my-2 my-lg-0 margin-lupa">
+          <input
+            className="form-control"
+            type="search"
+            placeholder="Buscar"
+            aria-label="Search"
+          ></input>
+          <i className="fas fa-search fa-2x mr-3 ml-5"></i>
         </form>
+      </div>
 
-        <div className="pt-5">
-          {error ? (
-            <Error
-              className="p-3"
-              mensaje="Todos los campos son obligatorios"
-            />
-          ) : null}
-          {errorContra ? (
-            <Error
-              className="p-3"
-              mensaje="Contraseña demasiado corta,minimo 6 caracteres"
-            />
-          ) : null}
-          {contraDiferente ? (
-            <Error className="p-3" mensaje="Las contraseñas deben coincidir" />
-          ) : null}
+      <div
+        className="modal fade"
+        id="staticBackdrop"
+        data-backdrop="static"
+        data-keyboard="false"
+        tabIndex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <i className="fas fa-times"></i>
+              </button>
+            </div>
+            <div className="modal-body">
+              <div className="mt-3 sombra">
+                <form onSubmit={onSubmit}>
+                  <div className="campo-form">
+                    <label htmlFor="name">Nombre</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      placeholder="Tu nombre"
+                      onChange={onChange}
+                    />
+                  </div>
+
+                  <div className="campo-form">
+                    <label htmlFor="email">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="Tu Email"
+                      onChange={onChange}
+                    />
+                  </div>
+
+                  <div className="campo-form">
+                    <label htmlFor="identificationCard">Cedula</label>
+                    <input
+                      type="number"
+                      id="identificationCard"
+                      name="identificationCard"
+                      placeholder="Numero de cedula"
+                      onChange={onChange}
+                    />
+                  </div>
+
+                  <div className="campo-form">
+                    <label htmlFor="password">Password</label>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      placeholder="Tu password"
+                      onChange={onChange}
+                    />
+                  </div>
+
+                  <div className="campo-form">
+                    <label htmlFor="confirmar">Confirmar Password</label>
+                    <input
+                      type="password"
+                      id="confirmar"
+                      name="confirmar"
+                      placeholder="Repite tu password"
+                      onChange={onChange}
+                    />
+                  </div>
+
+                  <div className="campo-form">
+                    <label htmlFor="isAdmin">Seleccionar Rol</label>
+                    <select name="isAdmin" onChange={onChange}>
+                      <option value="">-- Seleccione una opcion --</option>
+                      <option value="Administrador">Administrador</option>
+                      <option value="Usuario">Usuario</option>
+                    </select>
+                  </div>
+                  {isAdmin == "Usuario" ? (
+                    <div className="campo-form">
+                      <label htmlFor="team">Asignar Equipo</label>
+                      <select name="team" onChange={onChange}>
+                        <option value="">-- Seleccione una opcion --</option>
+                        <option value="diseño">Diseño</option>
+                        <option value="desarrollo">Desarrollo</option>
+                      </select>
+                    </div>
+                  ) : null}
+
+                  <div className="campo-form">
+                    <input
+                      type="submit"
+                      className="btn btn-primario btn-block"
+                      value="Crear usuario"
+                    />
+                  </div>
+                </form>
+
+                <div className="pt-5">
+                  {error ? (
+                    <Error
+                      className="p-3"
+                      mensaje="Todos los campos son obligatorios"
+                    />
+                  ) : null}
+                  {errorContra ? (
+                    <Error
+                      className="p-3"
+                      mensaje="Contraseña demasiado corta,minimo 6 caracteres"
+                    />
+                  ) : null}
+                  {contraDiferente ? (
+                    <Error
+                      className="p-3"
+                      mensaje="Las contraseñas deben coincidir"
+                    />
+                  ) : null}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Fragment>
