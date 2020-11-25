@@ -3,15 +3,15 @@ import React, {Fragment} from 'react';
 
 const ListadoUsuarios = ({usuario}) => {
 
-    const {nombre, email,cedula, rol, equipo} = usuario;
+    const {name, email,identificationCard, isAdmin, team} = usuario;
     return (
         <Fragment>
             <tr>
-                <td>{nombre}</td>
-                <td>{cedula}</td>
+                <td>{name}</td>
+                <td>{identificationCard}</td>
                 <td>{email}</td>
-                <td>{rol}</td>
-                <td>{equipo}</td>
+                <td>{isAdmin}</td>
+                <td>{team}</td>
             </tr>
         </Fragment>
       );

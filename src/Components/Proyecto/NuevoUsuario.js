@@ -3,10 +3,12 @@ import Error from "../Layout/Error";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions";
+import { v4 as uuidv4 } from "uuid";
 
-const NuevoUsuario = ({ CrearUsuario }) => {
+const NuevoUsuario = (props) => {
   //State para iniciar Sesión
   const [usuario, guardarUsuario] = useState({
+    id: "",
     name: "",
     email: "",
     identificationCard: "",
@@ -33,7 +35,6 @@ const NuevoUsuario = ({ CrearUsuario }) => {
     confirmar,
     identificationCard,
     isAdmin,
-    team,
   } = usuario;
 
   //cuando escriben algo en los input
@@ -86,8 +87,9 @@ const NuevoUsuario = ({ CrearUsuario }) => {
     //La cedula no se puede repetir
 
     //Agregando un Id a cada usuario creado
-    //usuario.id = uuidv4();
-
+    usuario.id = uuidv4();
+    //se crea el localstorage
+    props.CrearUsuario(usuario);
     //Pasarlo al action
     props.registerUser(usuario, "");
 
@@ -266,6 +268,7 @@ const mapDispatchToProps = {
 
 NuevoUsuario.propTypes = {
   registerUser: PropTypes.func,
+  CrearUsuario: PropTypes.func,
 };
 
 export default connect(null, mapDispatchToProps)(NuevoUsuario);
