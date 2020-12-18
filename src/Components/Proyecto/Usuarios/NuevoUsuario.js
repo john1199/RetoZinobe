@@ -1,9 +1,8 @@
 import React, { Fragment, useState } from "react";
-import Error from "../Layout/Error";
+import Error from "../../Layout/Error";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { registerUser } from "../../actions";
-import { v4 as uuidv4 } from "uuid";
+import { registerUser } from "../../../actions";
 
 const NuevoUsuario = (props) => {
   //State para iniciar Sesión
@@ -86,12 +85,10 @@ const NuevoUsuario = (props) => {
 
     //La cedula no se puede repetir
 
-    //Agregando un Id a cada usuario creado
-    usuario.id = uuidv4();
     //se crea el localstorage
-    props.CrearUsuario(usuario);
+    //props.CrearUsuario(usuario);
     //Pasarlo al action
-    props.registerUser(usuario, "");
+    props.registerUser(usuario, "/admin/crear-usuarios");
 
     //reiniciando el formularo
     e.target.reset();
@@ -110,12 +107,12 @@ const NuevoUsuario = (props) => {
       <div className="flexi">
         <i
           type="button"
-          className="far fa-plus-square fa-2x mr-3"
+          className="far fa-plus-square fa-2x mr-4"
           data-toggle="modal"
           data-target="#staticBackdrop"
         ></i>
         Agregar Usuario
-        <form className="form-inline my-2 my-lg-0 margin-lupa">
+        <form className="form-inline my-1 my-lg-0 margin-lupa">
           <input
             className="form-control"
             type="search"
@@ -214,13 +211,29 @@ const NuevoUsuario = (props) => {
                     </select>
                   </div>
                   {isAdmin == "Usuario" ? (
-                    <div className="campo-form">
-                      <label htmlFor="team">Asignar Equipo</label>
-                      <select name="team" onChange={onChange}>
-                        <option value="">-- Seleccione una opcion --</option>
-                        <option value="diseño">Diseño</option>
-                        <option value="desarrollo">Desarrollo</option>
-                      </select>
+                    <div>
+                      <div className="campo-form">
+                        <label htmlFor="team">Asignar Equipo</label>
+                        <select name="team" onChange={onChange}>
+                          <option value="">-- Seleccione una opcion --</option>
+                          {props.teams.map((team) => (
+                            <option key={team.id} value={team.name}>
+                              {team.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="campo-form">
+                        <label htmlFor="senioritie">Asignar Senioritie</label>
+                        <select name="senioritie" onChange={onChange}>
+                          <option value="">-- Seleccione una opcion --</option>
+                          {props.seniorities.map((senioritie) => (
+                            <option key={senioritie.id} value={senioritie.name}>
+                              {senioritie.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
                   ) : null}
 
@@ -268,7 +281,12 @@ const mapDispatchToProps = {
 
 NuevoUsuario.propTypes = {
   registerUser: PropTypes.func,
-  CrearUsuario: PropTypes.func,
 };
 
-export default connect(null, mapDispatchToProps)(NuevoUsuario);
+const mapStateToProps = (state) => {
+  return {
+    teams: state.teams,
+    seniorities: state.seniorities,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(NuevoUsuario);

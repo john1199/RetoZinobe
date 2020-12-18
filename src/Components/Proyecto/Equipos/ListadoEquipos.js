@@ -2,12 +2,12 @@ import React, {Fragment} from 'react';
 
 const ListadoEquipos = ({equipos}) => {
 
-    const {nombreEquipo,descripcion} = equipos;
+    const {name,description} = equipos;
     return ( 
         <Fragment>
             <tr>
-                <td>{nombreEquipo}</td>
-                <td>{descripcion}</td>
+                <td>{name}</td>
+                <td>{description}</td>
             </tr>
         </Fragment>
      );

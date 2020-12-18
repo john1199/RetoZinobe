@@ -29,10 +29,10 @@ const Login = (props) => {
     console.log(usuario);
     //Validar campos vacios
     //if (email.trim() === "" || password.trim() === "") {
-     // alert("Por favor rellene todos los campos");
-   // }
+    // alert("Por favor rellene todos los campos");
+    // }
     //Pasarlo al action
-    props.loginUser(usuario, "/progreso");
+    props.loginUser(usuario, "/perfil");
   };
 
   return (
@@ -43,7 +43,7 @@ const Login = (props) => {
 
       <div className="form-usuario">
         <div className="contenedor-form sombra-dark">
-          <h1>Iniciar Sesión</h1>
+            <h1>Iniciar Sesión</h1>
 
           <form onSubmit={onSubmit}>
             <div className="campo-form">
@@ -78,10 +78,9 @@ const Login = (props) => {
               />
             </div>
           </form>
-
-          <Link to={"/nueva-cuenta"} className="enlace-cuenta">
+          {/*} <Link to={"/nueva-cuenta"} className="enlace-cuenta">
             Obtener Cuenta
-          </Link>
+          </Link>*/}
         </div>
       </div>
     </Fragment>

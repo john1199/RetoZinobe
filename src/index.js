@@ -6,23 +6,20 @@ import { createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import reducer from "./reducers";
 import App from "./routes/App";
+import initialState from './initialState'
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const preloadedState = window.__PRELOADED_STATE__;
 
 const store = createStore(
   reducer,
-  preloadedState,
+  initialState,
   // funciones dentro de nuestros actions
-  composeEnhancers(applyMiddleware(thunk))
+  composeEnhancers(applyMiddleware(thunk)),
 );
 delete window.__PRELOADED_STATE__;
-
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
       <App />
-    </React.StrictMode>
-    ,
   </Provider>,
   document.getElementById("root")
 );

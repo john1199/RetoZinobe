@@ -1,4 +1,5 @@
 import axios from "axios";
+import setAuthToken from "../utils/setAuthToken";
 
 export const loginRequest = (payload) => ({
   type: "LOGIN_REQUEST",
@@ -19,6 +20,39 @@ export const setError = (payload) => ({
   type: "SET_ERROR",
   payload,
 });
+export const registerTeam = (payload, redirectUrl) => {
+  console.log(payload);
+  return (dispatch) => {
+    axios
+      .post("http://localhost:4000/api/admin/team", payload, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then(({ data }) => {
+        dispatch(registerRequest(data));
+      })
+      .then(() => {
+        window.location.href = redirectUrl;
+      })
+      .catch((error) => dispatch(setError(error)));
+  };
+};
+
+export const registerSenioritie = (payload, redirectUrl) => {
+  console.log(payload);
+  return (dispatch) => {
+    axios
+      .post("http://localhost:4000/api/admin/seniorities", payload, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then(({ data }) => {
+        dispatch(registerRequest(data));
+      })
+      .then(() => {
+        window.location.href = redirectUrl;
+      })
+      .catch((error) => dispatch(setError(error)));
+  };
+};
 
 export const registerUser = (payload, redirectUrl) => {
   return (dispatch) => {
@@ -27,9 +61,9 @@ export const registerUser = (payload, redirectUrl) => {
       .then(({ data }) => {
         dispatch(registerRequest(data));
       })
-      // .then(() => {
-      //  window.location.href = redirectUrl;
-      // })
+      .then(() => {
+        window.location.href = redirectUrl;
+      })
       .catch((error) => dispatch(setError(error)));
   };
 };
@@ -45,10 +79,17 @@ export const loginUser = ({ email, password }, redirectUrl) => {
       },
     })
       .then(({ data }) => {
-        document.cookie = `email=${data.user.email}`;
+        localStorage.clear();
         document.cookie = `name=${data.user.name}`;
+        document.cookie = `email=${data.user.email}`;
+        document.cookie = `team=${data.user.team}`;
+        document.cookie = `points=${data.user.points}`;
         if (data.user.isAdmin) {
-          redirectUrl = "/proyectos";
+          redirectUrl = "/admin/crear-usuarios";
+        }
+        if (data.token) {
+          setAuthToken(data.token);
+          localStorage.setItem("token", data.token);
         }
         dispatch(loginRequest(data.user));
       })

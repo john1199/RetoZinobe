@@ -3,12 +3,12 @@ import React,{Fragment} from 'react';
 
 const ListadoSenorities = ({niveles}) => {
 
-    const{senoritie,descripcion} = niveles;
+    const{name,description} = niveles;
     return ( 
         <Fragment>
             <tr>
-                <td>{senoritie}</td>
-                <td>{descripcion}</td>
+                <td>{name}</td>
+                <td>{description}</td>
             </tr>
         </Fragment>
      );
